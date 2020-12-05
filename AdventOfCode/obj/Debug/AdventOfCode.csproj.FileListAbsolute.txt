@@ -1,0 +1,5 @@
+/Users/rbakken/RiderProjects/AdventOfCode/AdventOfCode/bin/Debug/AdventOfCode.exe
+/Users/rbakken/RiderProjects/AdventOfCode/AdventOfCode/bin/Debug/AdventOfCode.pdb
+/Users/rbakken/RiderProjects/AdventOfCode/AdventOfCode/obj/Debug/AdventOfCode.csprojAssemblyReference.cache
+/Users/rbakken/RiderProjects/AdventOfCode/AdventOfCode/obj/Debug/AdventOfCode.exe
+/Users/rbakken/RiderProjects/AdventOfCode/AdventOfCode/obj/Debug/AdventOfCode.pdb
