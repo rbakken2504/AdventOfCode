@@ -1,4 +1,4 @@
-﻿using AdventOfCode.Day5;
+﻿using AdventOfCode.Day6;
 
 namespace AdventOfCode
 {
@@ -6,7 +6,6 @@ namespace AdventOfCode
     {
         public static void Main(string[] args)
         {
-            //Part1.Solve();
             Part2.Solve();
         }
     }
