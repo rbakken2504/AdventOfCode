@@ -38,6 +38,9 @@
         <Reference Include="System.Xml" />
     </ItemGroup>
     <ItemGroup>
+        <Compile Include="Day10\Part1.cs" />
+        <Compile Include="Day10\Part2.cs" />
+        <Compile Include="Day10\VoltageTreeNode.cs" />
         <Compile Include="Day5\Part1.cs" />
         <Compile Include="Day5\Part2.cs" />
         <Compile Include="Day5\SeatMap.cs" />
@@ -56,6 +59,7 @@
         <Compile Include="Properties\AssemblyInfo.cs" />
     </ItemGroup>
     <ItemGroup>
+      <Content Include="Day10\day_10.txt" />
       <Content Include="Day5\day_5.txt" />
       <Content Include="Day6\day_6.txt" />
       <Content Include="Day7\day_7.txt" />
