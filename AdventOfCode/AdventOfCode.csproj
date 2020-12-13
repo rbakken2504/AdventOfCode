@@ -44,6 +44,9 @@
         <Compile Include="Day10\VoltageTreeNode.cs" />
         <Compile Include="Day11\Part1.cs" />
         <Compile Include="Day11\Part2.cs" />
+        <Compile Include="Day12\EnumExtensions.cs" />
+        <Compile Include="Day12\Part1.cs" />
+        <Compile Include="Day12\Part2.cs" />
         <Compile Include="Day5\Part1.cs" />
         <Compile Include="Day5\Part2.cs" />
         <Compile Include="Day5\SeatMap.cs" />
@@ -64,6 +67,7 @@
     <ItemGroup>
       <Content Include="Day10\day_10.txt" />
       <Content Include="Day11\day_11.txt" />
+      <Content Include="Day12\day_12.txt" />
       <Content Include="Day5\day_5.txt" />
       <Content Include="Day6\day_6.txt" />
       <Content Include="Day7\day_7.txt" />
