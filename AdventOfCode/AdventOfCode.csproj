@@ -11,6 +11,7 @@
         <AssemblyName>AdventOfCode</AssemblyName>
         <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
         <FileAlignment>512</FileAlignment>
+        <LangVersion>latest</LangVersion>
     </PropertyGroup>
     <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
         <PlatformTarget>AnyCPU</PlatformTarget>
@@ -41,6 +42,8 @@
         <Compile Include="Day10\Part1.cs" />
         <Compile Include="Day10\Part2.cs" />
         <Compile Include="Day10\VoltageTreeNode.cs" />
+        <Compile Include="Day11\Part1.cs" />
+        <Compile Include="Day11\Part2.cs" />
         <Compile Include="Day5\Part1.cs" />
         <Compile Include="Day5\Part2.cs" />
         <Compile Include="Day5\SeatMap.cs" />
@@ -60,6 +63,7 @@
     </ItemGroup>
     <ItemGroup>
       <Content Include="Day10\day_10.txt" />
+      <Content Include="Day11\day_11.txt" />
       <Content Include="Day5\day_5.txt" />
       <Content Include="Day6\day_6.txt" />
       <Content Include="Day7\day_7.txt" />

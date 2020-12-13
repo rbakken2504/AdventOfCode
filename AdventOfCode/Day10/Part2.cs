@@ -26,7 +26,7 @@ namespace AdventOfCode.Day10
                 {3, 0}, {4, 0}, {5, 0}
             };
 
-            // Start from zero, else you will have a bad time.  This was also my problem with the tree, since I was getting 10976 for example 2
+            // Start from zero, else you will have a bad time.  This was also my problem with the tree, since I was getting the same 10976 for example 2
             var idx = -1;
             int nextJoltage = 0;
             while (nextJoltage != -1)
