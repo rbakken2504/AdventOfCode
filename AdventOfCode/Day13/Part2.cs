@@ -1,9 +1,7 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace AdventOfCode.Day13
 {
@@ -11,55 +9,53 @@ namespace AdventOfCode.Day13
     {
         public static void Solve()
         {
-            SortedDictionary<int, int> busOffsets = ParseBusOffsets();
-            Dictionary<int, long> busTimestampFound = busOffsets.ToDictionary(kvp => kvp.Key, _ => -1L);
+            Dictionary<int, int> busOffsets = ParseBusOffsets();
 
-            int multiple = busOffsets.First().Key;
-            int offset = busOffsets.First().Value;
-            long timestamp = multiple;
-
-            foreach (KeyValuePair<int,int> keyValuePair in busOffsets)
+            long multiplier = 0;
+            int step = 1;
+            Tuple<long, long> matchingTimestamps = new Tuple<long, long>(0, 0);
+            for (var i = 0; i < busOffsets.Count - 1; i++)
             {
-                Console.WriteLine($"{keyValuePair.Key} => {keyValuePair.Value}");
+                KeyValuePair<int, int> bus = busOffsets.ElementAt(i);
+                KeyValuePair<int, int> otherBus = busOffsets.ElementAt(i + 1);
+
+                matchingTimestamps = FindFirstMatchingTimestampFor(bus, otherBus, multiplier, step);
+
+                multiplier = matchingTimestamps.Item2 / otherBus.Key;
+                step = bus.Key;
             }
 
-            while (BusTimestampNotFound(busTimestampFound))
+            Console.WriteLine($"Earliest Timestamp: {matchingTimestamps.Item2 - busOffsets.Last().Value}");
+        }
+
+        private static Tuple<long, long> FindFirstMatchingTimestampFor(KeyValuePair<int, int> bus, KeyValuePair<int, int> otherBus, long multiplier = 0, int step = 1)
+        {
+            int interval = step;
+            long timestamp = bus.Key * (multiplier + interval);
+            Tuple<long, long> timestamps = null;
+            while (timestamps == null)
             {
-                busTimestampFound = ResetBusTimestamps(busTimestampFound);
-                foreach (KeyValuePair<int,int> busOffset in busOffsets)
+                Console.WriteLine($"Trying Timestamp: {timestamp}");
+                if (timestamp % bus.Key == 0 && (timestamp + otherBus.Value - bus.Value) % otherBus.Key == 0)
                 {
-                    if ((timestamp - offset + busOffset.Value) % busOffset.Key == 0)
-                    {
-                        busTimestampFound[busOffset.Key] = timestamp - offset + busOffset.Value;
-                    }
-                    else
-                    {
-                        break;
-                    }
+                    timestamps = new Tuple<long, long>(timestamp, timestamp + otherBus.Value - bus.Value);
+                    Console.WriteLine($"Found timestamps: {bus.Key} {timestamp} | {otherBus.Key} {timestamp + otherBus.Value - bus.Value}");
                 }
-
-                timestamp += multiple;
-                Console.WriteLine($"Timestamp to Try: {timestamp}");
+                else
+                {
+                    interval += step;
+                    timestamp = bus.Key * (multiplier + interval);
+                }
             }
 
-            Console.WriteLine($"Earliest Timestamp: {busTimestampFound[busOffsets.First(kvp => kvp.Value == 0).Key]}");
+            return timestamps;
         }
 
-        private static Dictionary<int, long> ResetBusTimestamps(Dictionary<int, long> busTimestamps)
-        {
-            return busTimestamps.ToDictionary(kvp => kvp.Key, _ => -1L);
-        }
-
-        private static bool BusTimestampNotFound(Dictionary<int, long> busTimestamps)
-        {
-            return busTimestamps.Any(busTimestamp => busTimestamp.Value == -1);
-        }
-
-        private static SortedDictionary<int, int> ParseBusOffsets()
+        private static Dictionary<int, int> ParseBusOffsets()
         {
             var file = new StreamReader(@"/Users/rbakken/RiderProjects/AdventOfCode/AdventOfCode/Day13/day_13.txt");
             string line;
-            var result = new SortedDictionary<int, int>(Comparer<int>.Create((x, y) => y.CompareTo(x)));
+            var result = new Dictionary<int, int>();
 
             while ((line = file.ReadLine()) != null)
             {
