@@ -21,7 +21,7 @@ namespace AdventOfCode.Day13
             );
 
             var timestampFound = false;
-            var i = 1886209060L;
+            var i = 3270237242L;
             var timestamp = 0L;
             while (!timestampFound)
             {
